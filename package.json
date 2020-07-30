@@ -1,0 +1,33 @@
+{
+  "name": "orchestra",
+  "version": "1.0.0",
+  "description": "Sleek symfony admin boilerplate",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.3",
+    "vue-router": "^3.3.4",
+    "vue-template-compiler": "^2.6.11",
+    "vuex": "^3.5.1",
+    "webpack-notifier": "^1.8.0"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.30.2"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suminagashi/orchestra.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suminagashi/orchestra/issues"
+  },
+  "homepage": "https://github.com/suminagashi/orchestra#readme"
+}
