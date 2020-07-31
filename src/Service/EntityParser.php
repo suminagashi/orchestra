@@ -12,6 +12,9 @@ use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
 use Suminagashi\OrchestraBundle\Service\AnnotationParser;
 use Suminagashi\OrchestraBundle\Service\PropertyParser;
+
+use Suminagashi\OrchestraBundle\Service\getEntityMeta;
+
 /**
  * Load entities & call Annotation & Property parser
  */
@@ -23,6 +26,7 @@ class EntityParser
 
     public function __construct()
     {
+      $this->getEntityMeta = new getEntityMeta;
       $this->finder = new Finder;
       $this->annotationParser = new AnnotationParser;
       $this->propertyParser = new PropertyParser;
@@ -40,8 +44,10 @@ class EntityParser
           $class = self::ENTITY_NAMESPACE . $file->getBasename('.php');
           $annotations = $this->annotationParser->readAnnotationFromClass($class);
           $properties = $this->propertyParser->readPropertiesFromClass($class);
+          $meta = $this->getEntityMeta->getMeta(new \ReflectionClass($class));
 
           $entities[$class] = [
+            'meta' => $meta,
             'annotations' => $annotations,
             'properties' => $properties,
           ];

@@ -42,7 +42,7 @@ class Resource
      */
     public function getActions()
     {
-        if(is_empty($this->actions)){
+        if(!$this->actions){
             return self::ACTIONS;
         }
         return $this->actions;

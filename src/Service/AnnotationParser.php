@@ -3,6 +3,7 @@
 namespace Suminagashi\OrchestraBundle\Service;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -34,6 +35,8 @@ class AnnotationParser
             self::RESOURCE_NAMESPACE
           );
 
+          //$annotations = $this->annotationReader->getClassAnnotations(new \ReflectionClass($class));
+
           if(!$resourceAnnotation){
               return false;
           }
@@ -44,10 +47,7 @@ class AnnotationParser
 
           foreach($properties as $property)
           {
-              $fieldsAnnotations[$property] = $this->annotationReader->getPropertyAnnotation(
-                new \ReflectionProperty($class, $property),
-                self::FIELD_NAMESPACE
-              );
+              $fieldsAnnotations[$property] = $this->annotationReader->getPropertyAnnotations(new \ReflectionProperty($class, $property));
           }
 
           return [

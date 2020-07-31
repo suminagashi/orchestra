@@ -14,7 +14,6 @@ use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
  */
 class PropertyParser
 {
-
     public function __construct()
     {
       $phpDocExtractor = new PhpDocExtractor();
