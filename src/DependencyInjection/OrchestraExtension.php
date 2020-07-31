@@ -13,11 +13,10 @@ final class OrchestraExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $this->addAnnotatedClassesToCompile([
-          'Suminagashi\\OrchestraBundle\\Controller\\DefaultController',
-        ]);
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader->load('services.yaml');
     }
 }

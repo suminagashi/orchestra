@@ -7,46 +7,46 @@
 
 ## Install the bundle :
 
-**Register the bundle :**
+> Flex recipe incoming...
 
-```
-Suminagashi\OrchestraBundle\Orchestra::class => ['all' => true],
-```
+### Register the bundle :
 
-**Register the route :**
+``` php
+// config/bundles.php
 
-```
-orchestra:
-  resource: "@Orchestra/Controller/DefaultController.php"
-  prefix: /orchestra
-  type: annotation
+return [
+    ...
+    Suminagashi\OrchestraBundle\OrchestraBundle::class => ['all' => true],
+];
 ```
 
-**Register the services :**
+### Register the route :
 
-```
-Suminagashi\OrchestraBundle\Controller\OrchestraController:
-  autoconfigure: true
+``` yaml
+// config/routes/orchestra.yaml
 
-Suminagashi\OrchestraBundle\Service\AnnotationParser:
-  autowire: true
+orchestra_admin:
+  resource: "@OrchestraBundle/Resources/config/routes.yaml"
+  prefix: /admin
 
-Suminagashi\OrchestraBundle\Service\EntityParser:
-  autowire: true
-
-Suminagashi\OrchestraBundle\Service\PropertyParser:
-  autowire: true
+_orchestra_resources:
+  resource: .
+  type: orchestra
 ```
 
-**Examples :**
+### Usage :
 
-Orchestra provide 2 new annotations : `Resource & Fields`
+- Orchestra provide 2 new annotations : 
+    - `@Resource` for class
+    - `@Field` for properties
+- The data validation is provided by `Symfony\Component\Validator\Constraints` annotation
 
-The data validation is provided by `Symfony\Component\Validator\Constraints` annotation
 
-Dummy.php example :
+### Examples :
 
-```
+``` php
+// src/Entity/Dummy.php
+
 <?php
 
 namespace App\Entity;
@@ -66,15 +66,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Dummy
 {
     /**
-     *
      * @var string
-     *
      * @ORM\Column(type="string")
-     *
      * @Groups({"read", "write"})
-     *
      * @Field(label="Test")
-     *
      * @Assert\NotNull()
      */
     private $test;
