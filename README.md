@@ -1,6 +1,12 @@
-# orchestra
+# WIP: Orchestra
+
+![orchestra](public/img/orchestra.png)
+
 Sleek symfony admin boilerplate
 
+
+
+## Install the bundle :
 
 Register the bundle :
 

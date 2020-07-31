@@ -1,0 +1,3 @@
+services:
+  Suminagashi\OrchestraBundle\Controller\DefaultController:
+    autoconfigure: true

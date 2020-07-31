@@ -1,0 +1,4 @@
+orchestra:
+  resource: "@Orchestra/Controller/DefaultController.php"
+  prefix: /orchestra
+  type: annotation
