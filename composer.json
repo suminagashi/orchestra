@@ -8,13 +8,18 @@
     "authors": [
         {
             "name": "Louis Harang",
-            "email": "lharang@wedigital.garden",
+            "email": "pro@narah.io",
             "homepage": "https://narah.now.sh",
+            "role": "Developer"
+        },
+        {
+            "name": "Hugo Knorr",
+            "email": "hugo.knorr@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.2.5",
+        "php": ">=7.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",

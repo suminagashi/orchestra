@@ -9,11 +9,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('orchestra');
-        $rootNode = $treeBuilder->getRootNode();
-        $rootNode->end();
+        $treeBuilder->getRootNode()->end();
 
         return $treeBuilder;
     }
