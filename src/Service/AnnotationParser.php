@@ -10,6 +10,8 @@ use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 
+use Suminagashi\OrchestraBundle\Service\AnnotationTranslator;
+
 /**
  * Parse annotation of a class
  */
@@ -21,6 +23,7 @@ class AnnotationParser
 
     public function __construct()
     {
+      $this->translator = new AnnotationTranslator();
       $this->annotationReader = new AnnotationReader;
       $this->listExtractors = [new ReflectionExtractor];
       $this->propertyInfo = new PropertyInfoExtractor(
@@ -41,18 +44,23 @@ class AnnotationParser
               return false;
           }
 
-          $fieldsAnnotations = [];
-
           $properties = $this->propertyInfo->getProperties($class);
 
           foreach($properties as $property)
           {
-              $fieldsAnnotations[$property] = $this->annotationReader->getPropertyAnnotations(new \ReflectionProperty($class, $property));
+              $annotations[$property] = $this->annotationReader->getPropertyAnnotations(new \ReflectionProperty($class, $property));
+
+              foreach ($annotations[$property] as $annotation) {
+                if($this->translator->translate($annotation)){
+                  $parsed[$property][] = $this->translator->translate($annotation);
+                }
+              }
           }
 
           return [
               'resource' => $resourceAnnotation,
-              'fields' => $fieldsAnnotations,
+              'fields' => $parsed,
           ];
     }
+
 }

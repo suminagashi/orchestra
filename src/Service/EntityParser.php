@@ -43,13 +43,16 @@ class EntityParser
 
           $class = self::ENTITY_NAMESPACE . $file->getBasename('.php');
           $annotations = $this->annotationParser->readAnnotationFromClass($class);
-          $properties = $this->propertyParser->readPropertiesFromClass($class);
+
+          if(!$annotations){
+            continue;
+          }
+
           $meta = $this->getEntityMeta->getMeta(new \ReflectionClass($class));
 
           $entities[$class] = [
             'meta' => $meta,
-            'annotations' => $annotations,
-            'properties' => $properties,
+            'data' => $annotations,
           ];
       }
 
