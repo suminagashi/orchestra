@@ -578,75 +578,15 @@ var render = function() {
             "flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6"
         },
         [
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex flex-row border-b items-center justify-between pb-2"
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "text-lg font-semibold capitalize dark:text-gray-300"
-                },
-                [_vm._v("\n          my admin\n        ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "relative " }, [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "hover:text-green-500 dark-hover:text-green-300\n            text-gray-600 dark:text-gray-300",
-                    attrs: { href: "inbox/" }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        attrs: {
-                          width: "24",
-                          height: "24",
-                          viewBox: "0 0 24 24",
-                          fill: "none",
-                          stroke: "currentColor",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("path", {
-                          attrs: { d: "M13.73 21a2 2 0 0 1-3.46 0" }
-                        })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", {
-                  staticClass:
-                    "absolute w-2 h-2 rounded-full bg-green-500\n            dark-hover:bg-green-300 right-0 mb-5 bottom-0"
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
           _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "button",
             {
               staticClass:
-                "mt-8 flex items-center justify-between py-3 px-2 text-white\n        dark:text-gray-200 bg-green-400 dark:bg-green-500 rounded-lg shadow"
+                "mt-8 flex items-center justify-between py-3 px-2 text-white\n        dark:text-gray-200 bg-blue-400 dark:bg-blue-500 rounded-lg shadow"
             },
             [
               _c("span", [_vm._v("Add user")]),
@@ -667,19 +607,54 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("ul", { staticClass: "mt-2 text-gray-600" }, [
+            _c(
+              "li",
+              {
+                staticClass:
+                  "mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg\n          -ml-4 shadow-xl"
+              },
+              [
+                _c(
+                  "a",
+                  { staticClass: "flex pl-4", attrs: { href: "#home" } },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-5 w-5 dark:text-gray-300",
+                        attrs: { viewBox: "0 0 24 24" }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6\n                4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6\n                4h4v-4h-4M4 8h4V4H4v4z"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-2 capitalize font-medium" }, [
+                      _vm._v("dashboard")
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
             _c("li", { staticClass: "mt-8" }, [
               _c("a", { staticClass: "flex ", attrs: { href: "#home" } }, [
                 _c(
                   "svg",
                   {
-                    staticClass: "fill-current h-5 w-5 dark:text-gray-300",
+                    staticClass: "fill-current h-5 w-5",
                     attrs: { viewBox: "0 0 24 24" }
                   },
                   [
                     _c("path", {
                       attrs: {
                         d:
-                          "M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6\n                4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6\n                4h4v-4h-4M4 8h4V4H4v4z"
+                          "M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0\n                014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4\n                8-4z"
                       }
                     })
                   ]
@@ -691,7 +666,7 @@ var render = function() {
                     staticClass:
                       "ml-2 capitalize font-medium text-black\n              dark:text-gray-300"
                   },
-                  [_vm._v("\n              dashboard\n            ")]
+                  [_vm._v("\n              user\n            ")]
                 )
               ])
             ]),
@@ -724,41 +699,6 @@ var render = function() {
                 )
               ])
             ]),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass:
-                  "mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg\n          -ml-4"
-              },
-              [
-                _c(
-                  "a",
-                  { staticClass: "flex pl-4", attrs: { href: "#home" } },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "fill-current h-5 w-5",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0\n                014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4\n                8-4z"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "ml-2 capitalize font-medium" }, [
-                      _vm._v("users")
-                    ])
-                  ]
-                )
-              ]
-            ),
             _vm._v(" "),
             _c("li", { staticClass: "mt-8" }, [
               _c("a", { staticClass: "flex", attrs: { href: "#home" } }, [
@@ -842,7 +782,7 @@ var render = function() {
                   "flex flex-row justify-between border-b\n          dark:border-gray-600 dark:text-gray-400 transition duration-500\n          ease-in-out"
               },
               [
-                _vm._m(1),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex items-center select-none" }, [
                   _c(
@@ -871,7 +811,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "w-12 bg-transparent focus:outline-none",
+                    staticClass: "w-20 bg-transparent focus:outline-none",
                     attrs: { placeholder: "Search" }
                   })
                 ])
@@ -880,147 +820,14 @@ var render = function() {
             _vm._v(" "),
             _c(
               "h2",
-              { staticClass: "my-4 text-4xl font-semibold dark:text-gray-400" },
-              [_vm._v("\n          User list\n        ")]
+              { staticClass: "my-4 text-2xl font-semibold dark:text-gray-400" },
+              [_vm._v("\n          Dashboard\n        ")]
             ),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "mt-6 flex justify-between text-gray-600 dark:text-gray-400"
-              },
-              [
-                _c("div", { staticClass: "ml-10 pl-2 flex capitalize" }, [
-                  _c("span", { staticClass: "ml-8 flex items-center" }, [
-                    _vm._v("\n              name\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass:
-                          "ml-1 h-5 w-5 fill-current text-green-500\n                dark:text-green-200",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "ml-24 flex items-center" }, [
-                    _vm._v("\n              login\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "ml-1 h-5 w-5 fill-current",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mr-12 flex capitalize" }, [
-                  _c("span", { staticClass: "mr-16 pr-1 flex items-center" }, [
-                    _vm._v("\n              project\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "ml-1 h-5 w-5 fill-current",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "mr-16 pr-2 flex items-center" }, [
-                    _vm._v("\n              role\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "ml-1 h-5 w-5 fill-current",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "mr-12 flex items-center" }, [
-                    _vm._v("\n              status\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "ml-1 h-5 w-5 fill-current",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "mr-16 flex items-center" }, [
-                    _vm._v("\n              date\n              "),
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "ml-1 h-5 w-5 fill-current",
-                        attrs: { viewBox: "0 0 24 24" }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M18 21l-4-4h3V7h-3l4-4 4 4h-3v10h3M2\n                  19v-2h10v2M2 13v-2h7v2M2 7V5h4v2H2z"
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5),
-            _vm._v(" "),
-            _vm._m(6)
+            _c("div", {
+              staticClass:
+                "pb-2 flex items-center justify-between text-gray-600\n          dark:text-gray-400 border-b dark:border-gray-600"
+            })
           ])
         ]
       )
@@ -1032,32 +839,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "flex flex-row border-b items-center justify-center pb-2"
+      },
+      [
+        _c(
+          "span",
+          {
+            staticClass: "text-lg font-semibold capitalize dark:text-gray-300"
+          },
+          [_vm._v("\n          Orchestra\n          ")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mt-8" }, [
-      _c("img", {
-        staticClass: "h-12 w-12 rounded-full object-cover",
-        attrs: {
-          src:
-            "https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png",
-          alt: "enoshima profile"
-        }
-      }),
-      _vm._v(" "),
       _c(
         "h2",
         {
           staticClass:
-            "mt-4 text-xl dark:text-gray-300 font-extrabold capitalize"
+            "mt-4 text-xl dark:text-gray-300 font-extrabold text-center capitalize"
         },
-        [_vm._v("\n          Hello Enoshima\n        ")]
+        [_vm._v("\n          Enoshima\n        ")]
       ),
       _vm._v(" "),
       _c("span", { staticClass: "text-sm dark:text-gray-300" }, [
         _c(
-          "span",
-          { staticClass: "font-semibold text-green-600 dark:text-green-300" },
+          "p",
+          {
+            staticClass:
+              "font-semibold text-blue-600 dark:text-blue-300 text-center"
+          },
           [_vm._v("\n            Admin\n          ")]
-        ),
-        _vm._v("\n          id789038\n        ")
+        )
       ])
     ])
   },
@@ -1094,649 +914,6 @@ var staticRenderFns = [
         [_vm._v("\n              access rights\n            ")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "pb-2 flex items-center justify-between text-gray-600\n          dark:text-gray-400 border-b dark:border-gray-600"
-      },
-      [
-        _c("div", [
-          _c("span", [
-            _c("span", { staticClass: "text-green-500 dark:text-green-200" }, [
-              _vm._v("\n                431\n              ")
-            ]),
-            _vm._v("\n              users;\n            ")
-          ]),
-          _vm._v(" "),
-          _c("span", [
-            _c("span", { staticClass: "text-green-500 dark:text-green-200" }, [
-              _vm._v("\n                22\n              ")
-            ]),
-            _vm._v("\n              projects;\n            ")
-          ]),
-          _vm._v(" "),
-          _c("span", [
-            _c("span", { staticClass: "text-green-500 dark:text-green-200" }, [
-              _vm._v("\n                33\n              ")
-            ]),
-            _vm._v("\n              roles\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("span", { staticClass: "capitalize" }, [
-            _vm._v("\n              project\n              "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "text-green-500 dark:text-green-200\n                cursor-pointer"
-              },
-              [_vm._v("\n                all\n              ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "capitalize ml-12" }, [
-            _vm._v("\n              date added\n              "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "text-green-500 dark:text-green-200\n                cursor-pointer"
-              },
-              [_vm._v("\n                all time\n              ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "capitalize ml-12" }, [
-            _vm._v("\n              role\n              "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "text-green-500 dark:text-green-200\n                cursor-pointer"
-              },
-              [_vm._v("\n                all\n              ")]
-            )
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "mt-2 flex px-4 py-4 justify-between bg-white\n          dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer "
-      },
-      [
-        _c("div", { staticClass: "flex justify-between" }, [
-          _c("img", {
-            staticClass: "h-12 w-12 rounded-full object-cover",
-            attrs: {
-              src: "https://inews.gtimg.com/newsapp_match/0/8693739867/0",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-4 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("name")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                carmen beltran\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-12 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("login")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                carmen.bel\n              ")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("project")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Aero treck\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-red-600 dark:text-red-400" }, [
-                _vm._v("\n                search\n              ")
-              ]),
-              _vm._v(" "),
-              _c("span", [_vm._v("2 more...")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("role")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Designer\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-red-600 dark:text-red-400" }, [
-                _vm._v("\n                Designer\n              ")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("status")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                None\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-red-600 dark:text-red-400" }, [
-                _vm._v("\n                in work\n              ")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-8 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("final date")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                20.02.2020\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-red-600 dark:text-red-400" }, [
-                _vm._v("\n                07.02.2020 11:00\n              ")
-              ])
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "mt-8 flex px-4 py-4 justify-between bg-white\n          dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer"
-      },
-      [
-        _c("div", { staticClass: "flex justify-between" }, [
-          _c("img", {
-            staticClass: "h-12 w-12 rounded-full object-cover",
-            attrs: {
-              src:
-                "https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-4 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("name")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                enoshima junko\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-12 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("login")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                zetsbuo\n              ")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("project")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Aero treck\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("role")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Front-End\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("status")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-yellow-600 dark:text-yellow-400" },
-                [_vm._v("\n                in work\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-8 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("final date")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                20.02.2020 11:00\n              ")]
-              )
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "mt-8 flex px-4 py-4 justify-between bg-white\n          dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer"
-      },
-      [
-        _c("div", { staticClass: "flex justify-between" }, [
-          _c("img", {
-            staticClass: "h-12 w-12 rounded-full object-cover",
-            attrs: {
-              src:
-                "https://www.hdwallpapers.in/download/2012_darksiders_ii-1920x1080.jpg",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-4 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("name")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                dark siders\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-12 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("login")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                dark siders\n              ")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("project")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Aero treck\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-black dark:text-gray-200" }, [
-                _vm._v("\n                Grass Max\n              ")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-black dark:text-gray-200" }, [
-                _vm._v("Mental")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("role")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                designer\n              ")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-black dark:text-gray-200" }, [
-                _vm._v("\n                designer\n              ")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-black dark:text-gray-200" }, [
-                _vm._v("\n                illustrator\n              ")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("status")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                on check\n              ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-yellow-600 dark:text-yellow-400" },
-                [_vm._v("\n                in work\n              ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                none\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-8 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("final date")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                20.02.2020 11:00\n              ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-yellow-600 dark:text-yellow-400" },
-                [_vm._v("\n                20.02.2020 13:00\n              ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                20.02.2020 11:00\n              ")]
-              )
-            ]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "mt-8 mb-4 flex px-4 py-4 justify-between bg-white\n          dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer"
-      },
-      [
-        _c("div", { staticClass: "flex justify-between" }, [
-          _c("img", {
-            staticClass: "h-12 w-12 rounded-full object-cover",
-            attrs: {
-              src:
-                "https://media.contentapi.ea.com/content/dam/gin/images/2017/01/crysis-3-keyart.jpg.adapt.crop1x1.767p.jpg",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-4 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("name")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                crysis\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "ml-12 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("login")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                crysis\n              ")]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("project")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                Killing\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("role")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-black dark:text-gray-200" },
-                [_vm._v("\n                hunter\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-16 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("status")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-yellow-600 dark:text-yellow-400" },
-                [_vm._v("\n                in work\n              ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "mr-8 flex flex-col capitalize text-gray-600\n              dark:text-gray-400"
-            },
-            [
-              _c("span", [_vm._v("final date")]),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "mt-2 text-green-400 dark:text-green-200" },
-                [_vm._v("\n                20.02.2020 11:00\n              ")]
-              )
-            ]
-          )
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true

@@ -2,10 +2,9 @@
 
 namespace Suminagashi\OrchestraBundle\Annotation;
 
-use Doctrine\Common\Annotations\Annotation;
-
 /**
  * @Annotation
+ * @Target("PROPERTY")
  */
 class Field
 {
