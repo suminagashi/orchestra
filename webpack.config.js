@@ -7,11 +7,13 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    .setOutputPath('src/Resources/views/js')
-    .setPublicPath('/js')
-    .addEntry('app', './src/Resources/client/index.js')
+    .setOutputPath('src/Resources/views/build')
+    .setPublicPath('/build')
+    .addEntry('app', './src/Resources/assets/js/index.js')
     .enableVueLoader(() => {}, { runtimeCompilerBuild: true})
-
+    .addStyleEntry('css/app', './src/Resources/assets/css/app.less')
+    .enableLessLoader()
+    .enablePostCssLoader()
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -12,7 +12,12 @@
     "webpack-notifier": "^1.8.0"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.30.2"
+    "@symfony/webpack-encore": "^0.30.2",
+    "autoprefixer": "^9.8.6",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "postcss-loader": "^3.0.0",
+    "tailwindcss": "^1.6.0"
   },
   "scripts": {
     "dev-server": "encore dev-server",
