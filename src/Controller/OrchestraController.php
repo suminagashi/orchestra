@@ -6,10 +6,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
-use Doctrine\Common\Annotations\AnnotationReader;
+use Suminagashi\OrchestraBundle\Service\EntityParser;
 
-class DefaultController extends AbstractController
+class OrchestraController extends AbstractController
 {
+
     /**
      * @Route("/", name="orchestra_root")
      * @Route(
@@ -17,8 +18,10 @@ class DefaultController extends AbstractController
      *  name="orchestra_dashboard",
      *  requirements={"route"="^(?!.*api|_wdt|_profiler).+"})
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, EntityParser $reader)
     {
+        $reader->read();
+
         return $this->render('@Orchestra/dashboard.html.twig', [
             'controller_name' => 'DefaultController',
         ]);

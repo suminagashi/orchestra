@@ -1,3 +1,7 @@
 services:
-  Suminagashi\OrchestraBundle\Controller\DefaultController:
+  Suminagashi\OrchestraBundle\Controller\OrchestraController:
     autoconfigure: true
+
+  annotation_discovery:
+      class: Suminagashi\OrchestraBundle\Service\AnnotationParser
+
