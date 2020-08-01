@@ -26,12 +26,10 @@ class OrchestraController extends AbstractController
     public function indexAction(Request $request, EntityParser $reader): Response
     {
         $entitiesInfos = $reader->read();
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
 
         return $this->render('@Orchestra/dashboard.html.twig', [
             'controller_name' => 'DefaultController',
+            'info' => json_encode($entitiesInfos, false)
         ]);
     }
 

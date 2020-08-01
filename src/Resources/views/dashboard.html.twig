@@ -10,5 +10,12 @@
         <script>
             {{ source('@Orchestra/build/app.js') }}
         </script>
+        <div id="orchestra" data-orchestra="{{info}}"></div>
     </body>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const parsed = document.querySelector('#orchestra').dataset.orchestra;
+            console.log(parsed);
+        });
+    </script>
 </html>
