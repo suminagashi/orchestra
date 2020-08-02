@@ -5,7 +5,7 @@ namespace Suminagashi\OrchestraBundle\Service;
 /**
  * Load entities & call Annotation & Property parser
  */
-class getEntityMeta
+class GetEntityMeta
 {
     public function getMeta($class)
     {
