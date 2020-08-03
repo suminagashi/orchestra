@@ -26,7 +26,7 @@ return [
 // config/routes/orchestra.yaml
 
 orchestra_admin:
-  resource: "@OrchestraBundle/Resources/config/routes.yaml"
+  resource: "@OrchestraBundle/Resources/config/routes.xml"
   prefix: /admin
 
 _orchestra_resources:
