@@ -2,37 +2,38 @@
 
 namespace Suminagashi\OrchestraBundle\Utils;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
-
-use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
+
 /**
  * Parse entity properties
  */
 class PropertyParser
 {
+    /**
+     * @var PropertyInfoExtractor
+     */
+    private $propertyInfo;
+
     public function __construct()
     {
       $phpDocExtractor = new PhpDocExtractor();
       $reflectionExtractor = new ReflectionExtractor();
 
-      $accessExtractors = [$reflectionExtractor];
-      $typeExtractors = [$phpDocExtractor, $reflectionExtractor];
-      $descriptionExtractors = [$phpDocExtractor];
-
-      $this->listExtractors = [new ReflectionExtractor];
       $this->propertyInfo = new PropertyInfoExtractor(
-          $this->listExtractors,
-          $accessExtractors,
-          $typeExtractors,
-          $descriptionExtractors,
+          [new ReflectionExtractor],
+          [$reflectionExtractor],
+          [$phpDocExtractor, $reflectionExtractor],
+          [$phpDocExtractor]
       );
     }
 
-    public function readPropertiesFromClass($class)
+    /**
+     * @param $class
+     * @return array
+     */
+    public function readPropertiesFromClass($class): array
     {
 
       $parsedProperties = [];

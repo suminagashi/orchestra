@@ -7,7 +7,11 @@ namespace Suminagashi\OrchestraBundle\Utils;
  */
 class GetEntityMeta
 {
-    public function getMeta($class)
+    /**
+     * @param $class
+     * @return array
+     */
+    public function getMeta($class): array
     {
       $classname = explode('\\',$class->getName())[2];
       return [
