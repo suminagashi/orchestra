@@ -1,3 +1,0 @@
-defaults:
-  resource: "../../Controller/"
-  type: annotation

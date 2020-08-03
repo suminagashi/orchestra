@@ -1,0 +1,26 @@
+services:
+  suminagashi_orchestra.annotation.parser:
+    class: Suminagashi\OrchestraBundle\Utils\AnnotationParser
+    arguments:
+      ['@suminagashi_orchestra.annotation.translator', '@annotations.reader']
+  suminagashi_orchestra.annotation.translator:
+    class: Suminagashi\OrchestraBundle\Utils\AnnotationTranslator
+  suminagashi_orchestra.entity.parser:
+    class: Suminagashi\OrchestraBundle\Utils\EntityParser
+    arguments:
+      - '@suminagashi_orchestra.entity.meta'
+      - '@suminagashi_orchestra.annotation.parser'
+  suminagashi_orchestra.entity.meta:
+    class: Suminagashi\OrchestraBundle\Utils\GetEntityMeta
+  suminagashi_orchestra.property.parser:
+    class: Suminagashi\OrchestraBundle\Utils\PropertyParser
+
+  suminagashi_orchestra.controller.admin:
+    class: Suminagashi\OrchestraBundle\Controller\OrchestraController
+    public: true
+    arguments:
+      - '@suminagashi_orchestra.entity.parser'
+
+  suminagashi_orchestra.routing.doc_parser_loader:
+    class: Suminagashi\OrchestraBundle\Routing\DocParserLoader
+    tags: [routing.loader]
