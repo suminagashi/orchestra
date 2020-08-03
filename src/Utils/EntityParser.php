@@ -33,9 +33,6 @@ class EntityParser
      */
     public function read(): array
     {
-        $finder = new Finder();
-        $finder->files()->in($this->resourceClassDirectories);
-
         $entities = [];
         /**
          * @var string $className
@@ -67,20 +64,23 @@ class EntityParser
         foreach ($reflectionClass->getProperties() as $property) {
             foreach ($this->reader->getPropertyAnnotations($property) as $annotation) {
                 if ($annotationTranslation = AnnotationTranslator::translate($annotation)) {
-                    $fields[$property->getName()][] = $annotationTranslation;
+                     if(isset($fields[$property->getName()][$annotationTranslation['type']])) {
+                       $fields[$property->getName()][$annotationTranslation['type']] += $annotationTranslation['values'];
+                     } else {
+                       $fields[$property->getName()][$annotationTranslation['type']] = $annotationTranslation['values'];
+                     }
                 }
             }
         }
 
+        $meta = array_merge([
+            'name' => $reflectionClass->getShortName(),
+            'fullname' => $reflectionClass->getName(),
+        ], (array) $resourceAnnotation);
+
         return [
-            'meta' => [
-                'name' => $reflectionClass->getShortName(),
-                'fullname' => $reflectionClass->getName(),
-            ],
-            'data' => [
-                'resource' => $resourceAnnotation,
-                'fields' => $fields,
-            ],
+            'meta' => $meta,
+            'fields' => $fields,
         ];
     }
 }

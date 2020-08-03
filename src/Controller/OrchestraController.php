@@ -18,7 +18,7 @@ class OrchestraController extends AbstractController
     public function dashboard(EntityParser $entityParser): Response
     {
         $entitiesInfos = $entityParser->read();
-
+        dd($entitiesInfos);
         return $this->render('@Orchestra/dashboard.html.twig', [
             'controller_name' => 'DefaultController',
             'info' => json_encode($entitiesInfos, false)

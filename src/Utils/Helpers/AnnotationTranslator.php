@@ -75,17 +75,25 @@ class AnnotationTranslator
         foreach (self::ASSERTS[get_class($annotation)] as $filterFormInfo) {
             $form[$filterFormInfo] = $annotation->$filterFormInfo;
         }
-        return ['validation' => $form];
+        $validationType = self::getValidationType(get_class($annotation));
+        return ['type' => 'validation', 'values' => [$validationType => $form]];
     }
 
     private static function translateField($annotation): array
     {
-        return ['field' => $annotation->label];
+        return ['type'=>'field', 'values' => $annotation->label];
     }
 
     private static function translateORM($annotation): array
     {
-        return ['type' => $annotation->type];
+        return ['type' => 'type', 'values' => $annotation->type];
+    }
+
+    private static function getValidationType($class): string
+    {
+        $array = explode('\\', $class);
+        $lastKey = key(array_slice($array, -1, 1, true));
+        return strtolower($array[$lastKey]);
     }
 
 }
