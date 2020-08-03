@@ -2,6 +2,10 @@
 
 namespace Suminagashi\OrchestraBundle\Utils;
 
+use Doctrine\Common\Annotations\Reader;
+use Suminagashi\OrchestraBundle\Annotation\Resource;
+use Suminagashi\OrchestraBundle\Utils\Helpers\AnnotationTranslator;
+use Suminagashi\OrchestraBundle\Utils\Helpers\ReflectionClassRecursiveIterator;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -9,25 +13,18 @@ use Symfony\Component\Finder\Finder;
  */
 class EntityParser
 {
-    public const ENTITY_DIR = '../src/Entity';
-    public const ENTITY_NAMESPACE = 'App\\Entity\\';
-
-    /**
-     * @var GetEntityMeta
-     */
-    private $getEntityMeta;
-    /**
-     * @var AnnotationParser
-     */
-    private $annotationParser;
+    /** @var Reader */
+    private $reader;
+    /** @var array */
+    private $resourceClassDirectories;
 
     public function __construct(
-        GetEntityMeta $entityMeta,
-        AnnotationParser $annotationParser
+        Reader $reader,
+        $resourceClassDirectories
     )
     {
-        $this->getEntityMeta = $entityMeta;
-        $this->annotationParser = $annotationParser;
+        $this->reader = $reader;
+        $this->resourceClassDirectories = $resourceClassDirectories;
     }
 
     /**
@@ -37,27 +34,53 @@ class EntityParser
     public function read(): array
     {
         $finder = new Finder();
-        $finder->files()->in(self::ENTITY_DIR);
+        $finder->files()->in($this->resourceClassDirectories);
 
         $entities = [];
-
-        foreach ($finder as $file) {
-            $class = self::ENTITY_NAMESPACE . $file->getBasename('.php');
-            $annotations = $this->annotationParser->readAnnotationFromClass($class);
-
-            if (!$annotations) {
-                continue;
+        /**
+         * @var string $className
+         * @var \ReflectionClass $reflectionClass
+         */
+        foreach (ReflectionClassRecursiveIterator::getReflectionClassesFromDirectories($this->resourceClassDirectories) as $className => $reflectionClass) {
+            $resourceAnnotation = $this->generateDataFromAnnotation($reflectionClass);
+            if ($resourceAnnotation !== null) {
+                $entities[$className] = $resourceAnnotation;
             }
-
-            $meta = $this->getEntityMeta->getMeta(new \ReflectionClass($class));
-
-            $entities[$class] = [
-                'meta' => $meta,
-                'data' => $annotations,
-            ];
         }
 
         return $entities;
 
+    }
+
+    /**
+     * @param \ReflectionClass $reflectionClass
+     * @return array[]|null
+     */
+    private function generateDataFromAnnotation(\ReflectionClass $reflectionClass): ?array
+    {
+        $resourceAnnotation = $this->reader->getClassAnnotation($reflectionClass, Resource::class);
+        if ($resourceAnnotation === null) {
+            return null;
+        }
+
+        $fields = [];
+        foreach ($reflectionClass->getProperties() as $property) {
+            foreach ($this->reader->getPropertyAnnotations($property) as $annotation) {
+                if ($annotationTranslation = AnnotationTranslator::translate($annotation)) {
+                    $fields[$property->getName()][] = $annotationTranslation;
+                }
+            }
+        }
+
+        return [
+            'meta' => [
+                'name' => $reflectionClass->getShortName(),
+                'fullname' => $reflectionClass->getName(),
+            ],
+            'data' => [
+                'resource' => $resourceAnnotation,
+                'fields' => $fields,
+            ],
+        ];
     }
 }

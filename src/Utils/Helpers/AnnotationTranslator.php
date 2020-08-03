@@ -1,6 +1,6 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Utils;
+namespace Suminagashi\OrchestraBundle\Utils\Helpers;
 
 /**
  * Load entities & call Annotation & Property parser
@@ -8,12 +8,12 @@ namespace Suminagashi\OrchestraBundle\Utils;
 class AnnotationTranslator
 {
 
-    const ASSERTS = [
+    private const ASSERTS = [
         'Symfony\Component\Validator\Constraints\NotBlank' => ['message'],
         'Symfony\Component\Validator\Constraints\Blank' => ['message'],
         'Symfony\Component\Validator\Constraints\NotNull' => ['message'],
         'Symfony\Component\Validator\Constraints\IsNull' => ['message'],
-        'Symfony\Component\Validator\Constraints\IsTrue'=> ['message'],
+        'Symfony\Component\Validator\Constraints\IsTrue' => ['message'],
         'Symfony\Component\Validator\Constraints\IsFalse' => ['message'],
         'Symfony\Component\Validator\Constraints\Email' => ['message'],
         'Symfony\Component\Validator\Constraints\ExpressionLanguageSyntax' => ['message'],
@@ -45,7 +45,7 @@ class AnnotationTranslator
         'Symfony\Component\Validator\Constraints\DateTime',
         'Symfony\Component\Validator\Constraints\Time',
         'Symfony\Component\Validator\Constraints\Timezone',
-        'Symfony\Component\Validator\Constraints\Choice' => ['message', 'choices', 'multipleMessage','minMessage','maxMessage'],
+        'Symfony\Component\Validator\Constraints\Choice' => ['message', 'choices', 'multipleMessage', 'minMessage', 'maxMessage'],
         'Symfony\Component\Validator\Constraints\Language',
         'Symfony\Component\Validator\Constraints\Locale',
         'Symfony\Component\Validator\Constraints\Country',
@@ -53,23 +53,24 @@ class AnnotationTranslator
         'Symfony\Component\Validator\Constraints\Image',
     ];
 
-    public function translate($annotation){
+    public static function translate($annotation)
+    {
         $class = get_class($annotation);
 
-        if ($class === 'Doctrine\ORM\Mapping\Column')
-        {
+        if ($annotation === 'Doctrine\ORM\Mapping\Column') {
             return self::translateORM($annotation);
         }
-        if(array_key_exists($class, self::ASSERTS)){
-            return self::translateValidation($annotation);
-        }
-        if($class === 'Suminagashi\OrchestraBundle\Annotation\Field'){
+        if ($class === 'Suminagashi\OrchestraBundle\Annotation\Field') {
             return self::translateField($annotation);
+        }
+        if (array_key_exists($class, self::ASSERTS)) {
+            return self::translateValidation($annotation);
         }
         return false;
     }
 
-    private static function translateValidation($annotation){
+    private static function translateValidation($annotation): array
+    {
         $form = [];
         foreach (self::ASSERTS[get_class($annotation)] as $filterFormInfo) {
             $form[$filterFormInfo] = $annotation->$filterFormInfo;
@@ -77,11 +78,13 @@ class AnnotationTranslator
         return ['validation' => $form];
     }
 
-    private static function translateField($annotation){
+    private static function translateField($annotation): array
+    {
         return ['field' => $annotation->label];
     }
 
-    private static function translateORM($annotation){
+    private static function translateORM($annotation): array
+    {
         return ['type' => $annotation->type];
     }
 
