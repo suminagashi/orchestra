@@ -25,7 +25,7 @@ class Resource
      *
      * @var array
      */
-    public $actions = [];
+    public $actions = self::ACTIONS;
 
     /**
      * @return string
@@ -40,9 +40,6 @@ class Resource
      */
     public function getActions()
     {
-        if(!$this->actions){
-            return self::ACTIONS;
-        }
         return $this->actions;
     }
 }

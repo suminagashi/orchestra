@@ -4,5 +4,5 @@ import Dashboard from './views/Dashboard';
 import Edit from './views/Edit';
 
 new Vue({
-  render: h => h(Edit)
+  render: h => h(App)
 }).$mount('#app');

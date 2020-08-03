@@ -20,7 +20,7 @@ final class OrchestraExtension extends Extension
 
         $container->setParameter(
             'suminagashi_orchestra.resource_class_directories',
-            $config['resource_class_directories'] ?: $projectDir.'/src/Entity'
+            $config['resource_class_directories'] ?: [$projectDir.'/src/Entity']
         );
 
         $loader->load('services.xml');
