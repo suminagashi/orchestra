@@ -1,34 +1,39 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Service;
+namespace Suminagashi\OrchestraBundle\Utils;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
-
-use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
+use Suminagashi\OrchestraBundle\Annotation\Field;
+use Suminagashi\OrchestraBundle\Annotation\Resource;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-
-use Suminagashi\OrchestraBundle\Service\AnnotationTranslator;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 
 /**
  * Parse annotation of a class
  */
 class AnnotationParser
 {
+    public CONST RESOURCE_NAMESPACE = Resource::class;
+    public CONST FIELD_NAMESPACE = Field::class;
 
-    CONST RESOURCE_NAMESPACE = 'Suminagashi\OrchestraBundle\Annotation\Resource';
-    CONST FIELD_NAMESPACE = 'Suminagashi\OrchestraBundle\Annotation\Field';
+    /**
+     * @var AnnotationTranslator
+     */
+    private $translator;
+    /**
+     * @var AnnotationReader
+     */
+    private $annotationReader;
+    /**
+     * @var PropertyInfoExtractor
+     */
+    private $propertyInfo;
 
-    public function __construct()
+    public function __construct(AnnotationTranslator $annotationTranslator, AnnotationReader $annotationReader)
     {
-      $this->translator = new AnnotationTranslator();
-      $this->annotationReader = new AnnotationReader;
-      $this->listExtractors = [new ReflectionExtractor];
-      $this->propertyInfo = new PropertyInfoExtractor(
-          $this->listExtractors,
-      );
+      $this->translator = $annotationTranslator;
+      $this->annotationReader = $annotationReader;
+      $this->propertyInfo = new PropertyInfoExtractor([new ReflectionExtractor]);
     }
 
     public function readAnnotationFromClass($class)

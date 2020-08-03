@@ -1,9 +1,6 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Service;
-
-
-use Symfony\Component\Validator\Constraints as Assert;
+namespace Suminagashi\OrchestraBundle\Utils;
 
 /**
  * Load entities & call Annotation & Property parser
@@ -63,10 +60,10 @@ class AnnotationTranslator
         {
             return self::translateORM($annotation);
         }
-        else if(array_key_exists($class, self::ASSERTS)){
+        if(array_key_exists($class, self::ASSERTS)){
             return self::translateValidation($annotation);
         }
-        else if($class === 'Suminagashi\OrchestraBundle\Annotation\Field'){
+        if($class === 'Suminagashi\OrchestraBundle\Annotation\Field'){
             return self::translateField($annotation);
         }
         return false;
