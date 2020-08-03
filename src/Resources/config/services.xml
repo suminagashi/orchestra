@@ -1,26 +1,31 @@
-services:
-  suminagashi_orchestra.annotation.parser:
-    class: Suminagashi\OrchestraBundle\Utils\AnnotationParser
-    arguments:
-      ['@suminagashi_orchestra.annotation.translator', '@annotations.reader']
-  suminagashi_orchestra.annotation.translator:
-    class: Suminagashi\OrchestraBundle\Utils\AnnotationTranslator
-  suminagashi_orchestra.entity.parser:
-    class: Suminagashi\OrchestraBundle\Utils\EntityParser
-    arguments:
-      - '@suminagashi_orchestra.entity.meta'
-      - '@suminagashi_orchestra.annotation.parser'
-  suminagashi_orchestra.entity.meta:
-    class: Suminagashi\OrchestraBundle\Utils\GetEntityMeta
-  suminagashi_orchestra.property.parser:
-    class: Suminagashi\OrchestraBundle\Utils\PropertyParser
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="true" autoconfigure="true"/>
+        <service id="suminagashi_orchestra.annotation.parser" class="Suminagashi\OrchestraBundle\Utils\AnnotationParser">
+            <argument type="service" id="suminagashi_orchestra.annotation.translator" />
+            <argument type="service" id="annotations.reader" />
+        </service>
+        <service id="suminagashi_orchestra.annotation.translator" class="Suminagashi\OrchestraBundle\Utils\AnnotationTranslator" />
+        <service id="suminagashi_orchestra.entity.parser" class="Suminagashi\OrchestraBundle\Utils\EntityParser" public="true">
+            <argument type="service" id="suminagashi_orchestra.entity.meta" />
+            <argument type="service" id="suminagashi_orchestra.annotation.parser" />
+        </service>
+        <service id="Suminagashi\OrchestraBundle\Utils\EntityParser" alias="suminagashi_orchestra.entity.parser" public="false" />
 
-  suminagashi_orchestra.controller.admin:
-    class: Suminagashi\OrchestraBundle\Controller\OrchestraController
-    public: true
-    arguments:
-      - '@suminagashi_orchestra.entity.parser'
+        <service id="suminagashi_orchestra.entity.meta" class="Suminagashi\OrchestraBundle\Utils\GetEntityMeta" />
+        <service id="suminagashi_orchestra.property.parser" class="Suminagashi\OrchestraBundle\Utils\PropertyParser" />
 
-  suminagashi_orchestra.routing.doc_parser_loader:
-    class: Suminagashi\OrchestraBundle\Routing\DocParserLoader
-    tags: [routing.loader]
+        <service id="suminagashi_orchestra.routing.doc_parser_loader" class="Suminagashi\OrchestraBundle\Routing\DocParserLoader">
+            <tag name="routing.loader" />
+        </service>
+
+        <!--Controllers-->
+        <service id="suminagashi_orchestra.controller.admin" class="Suminagashi\OrchestraBundle\Controller\OrchestraController" public="true">
+            <argument type="service" id="suminagashi_orchestra.entity.parser" />
+        </service>
+    </services>
+</container>

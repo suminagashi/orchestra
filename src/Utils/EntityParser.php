@@ -17,33 +17,31 @@ class EntityParser
      */
     private $getEntityMeta;
     /**
-     * @var Finder
-     */
-    private $finder;
-    /**
      * @var AnnotationParser
      */
     private $annotationParser;
 
     public function __construct(
         GetEntityMeta $entityMeta,
-        Finder $finder,
         AnnotationParser $annotationParser
     )
     {
         $this->getEntityMeta = $entityMeta;
-        $this->finder = $finder;
         $this->annotationParser = $annotationParser;
     }
 
-    public function read()
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
+    public function read(): array
     {
-
-        $this->finder->files()->in(self::ENTITY_DIR);
+        $finder = new Finder();
+        $finder->files()->in(self::ENTITY_DIR);
 
         $entities = [];
 
-        foreach ($this->finder as $file) {
+        foreach ($finder as $file) {
             $class = self::ENTITY_NAMESPACE . $file->getBasename('.php');
             $annotations = $this->annotationParser->readAnnotationFromClass($class);
 

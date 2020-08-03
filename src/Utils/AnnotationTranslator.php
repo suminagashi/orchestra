@@ -1,6 +1,6 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Service;
+namespace Suminagashi\OrchestraBundle\Utils;
 
 
 use Symfony\Component\Validator\Constraints as Assert;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Service;
+namespace Suminagashi\OrchestraBundle\Utils;
 
 /**
  * Load entities & call Annotation & Property parser

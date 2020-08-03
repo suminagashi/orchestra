@@ -1,6 +1,6 @@
 <?php
 
-namespace Suminagashi\OrchestraBundle\Service;
+namespace Suminagashi\OrchestraBundle\Utils;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Finder\Finder;
