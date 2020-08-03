@@ -19,5 +19,28 @@
         <service id="suminagashi_orchestra.controller.admin" class="Suminagashi\OrchestraBundle\Controller\OrchestraController" public="true">
             <argument type="service" id="suminagashi_orchestra.entity.parser" />
         </service>
+
+        <!--Actions-->
+
+        <service id="suminagashi_orchestra.action.api_abstract_action" class="Suminagashi\OrchestraBundle\Action\AbstractAction" public="true">
+            <argument type="service" id="request_stack" />
+        </service>
+
+        <service id="suminagashi_orchestra.action.api_get_collection" class="Suminagashi\OrchestraBundle\Action\CollectionAction" public="true">
+        </service>
+
+        <service id="suminagashi_orchestra.action.api_get" class="Suminagashi\OrchestraBundle\Action\GetAction" public="true">
+        </service>
+
+        <service id="suminagashi_orchestra.action.api_put" class="Suminagashi\OrchestraBundle\Action\PutAction" public="true">
+        </service>
+
+        <service id="suminagashi_orchestra.action.api_patch" class="Suminagashi\OrchestraBundle\Action\PatchAction" public="true">
+        </service>
+
+        <service id="suminagashi_orchestra.action.api_post" class="Suminagashi\OrchestraBundle\Action\PostAction" public="true">
+        </service>
+
+
     </services>
 </container>

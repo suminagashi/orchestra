@@ -3,5 +3,33 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
-    <route id="orchestra_admin_dashboard" controller="suminagashi_orchestra.controller.admin:dashboard" path="/" />
+    <route
+      id="orchestra_admin_dashboard"
+      controller="suminagashi_orchestra.controller.admin:dashboard"
+      path="/"
+    />
+    <route id="orchestra_api_get" path="/api/{resource}/{id}" methods="GET">
+        <default key="_controller">suminagashi_orchestra.action.api_get</default>
+        <default key="resource">index</default>
+    </route>
+
+    <route id="orchestra_api_put" path="/api/{resource}/{id}" methods="PUT">
+        <default key="_controller">suminagashi_orchestra.action.api_put</default>
+        <default key="resource">index</default>
+    </route>
+
+    <route id="orchestra_api_post" path="/api/{resource}/{id}" methods="POST">
+        <default key="_controller">suminagashi_orchestra.action.api_post</default>
+        <default key="resource">index</default>
+    </route>
+
+    <route id="orchestra_api_patch" path="/api/{resource}/{id}" methods="PATCH">
+        <default key="_controller">suminagashi_orchestra.action.api_patch</default>
+        <default key="resource">index</default>
+    </route>
+
+    <route id="orchestra_api_get_collection" path="/api/{resource}" methods="GET">
+        <default key="_controller">suminagashi_orchestra.action.api_get_collection</default>
+        <default key="resource">index</default>
+    </route>
 </routes>
