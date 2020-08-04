@@ -1,9 +1,15 @@
-<h1 style="text-align:center">Orchestra</h1>
+<p align="center"><img alt="orchestra" src="./public/img/orchestra.png" width="500"/></p>
 
-![orchestra](public/img/orchestra.png)
+<p align="center">
+<b>Sleek symfony admin boilerplate</b>
+</p>
 
-**Sleek symfony admin boilerplate**
-
+<p align="center">
+    <img src="https://github.com/suminagashi/orchestra/workflows/Build/badge.svg?branch=master" alt="Build">
+    <a href="https://packagist.org/packages/suminagashi/orchestra"><img src="https://poser.pugx.org/suminagashi/orchestra/version" alt="Version"></a>
+    <a href="https://packagist.org/packages/suminagashi/orchestra"><img src="https://poser.pugx.org/suminagashi/orchestra/downloads" alt="Total Download"></a>
+    <a href="https://packagist.org/packages/suminagashi/orchestra"><img src="https://poser.pugx.org/suminagashi/orchestra/license" alt="License"></a>
+</p>
 
 ## Install the bundle :
 
@@ -36,10 +42,10 @@ _orchestra_resources:
 
 ### Usage :
 
-- Orchestra provide 2 new annotations : 
+- Orchestra provide 2 new annotations :
     - `@Resource` for class
     - `@Field` for properties
-- The data validation is provided by `Symfony\Component\Validator\Constraints` annotation
+- The data validation use `Symfony\Component\Validator\Constraints` annotation
 
 
 ### Examples :
