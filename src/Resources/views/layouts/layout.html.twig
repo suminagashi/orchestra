@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Orchestra{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/orchestra/build/css/app.css') }}">
+        <link rel="stylesheet" href="/bundles/orchestra/build/css/app.css">
     {% endblock %}
 </head>
 <body>
@@ -16,7 +16,7 @@
         {% block body %}{% endblock %}
     </div>
     {% block javascripts %}
-        <script src="{{ asset('bundles/orchestra/build/app.js') }}"></script>
+        <script src="/bundles/orchestra/build/app.js"></script>
     {% endblock %}
 </body>
 </html>
