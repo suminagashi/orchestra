@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import App from './App';
-import Dashboard from './views/Dashboard';
-import Edit from './views/Edit';
+
+Vue.component('custom-app', require('./App.vue').default);
+Vue.component('menu-link', require('./components/ui/Navbar/Link.vue').default);
 
 new Vue({
-  render: h => h(App)
-}).$mount('#app');
+  el: '#app',
+});

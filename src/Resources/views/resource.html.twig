@@ -1,0 +1,27 @@
+{% extends '@Orchestra/layouts/layout.html.twig' %}
+
+{% block title %}{{ resource }}{% endblock %}
+
+{% block body %}
+    <h1>{{ resource|capitalize }}</h1>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                {% for property in properties %}
+                    <td>{{ property.name }}</td>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in data %}
+                <tr>
+                    {% for property in properties %}
+                        <td>{{ attribute(item, property.name) }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

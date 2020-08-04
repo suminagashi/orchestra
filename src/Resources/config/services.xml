@@ -5,18 +5,23 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <defaults autowire="true" autoconfigure="true"/>
-        <service id="suminagashi_orchestra.annotation.translator" class="Suminagashi\OrchestraBundle\Utils\AnnotationTranslator" />
+        <service id="suminagashi_orchestra.annotation.translator" class="Suminagashi\OrchestraBundle\Utils\Helpers\AnnotationTranslator" />
         <service id="suminagashi_orchestra.entity.parser" class="Suminagashi\OrchestraBundle\Utils\EntityParser" public="true">
             <argument type="service" id="annotations.reader" />
             <argument>%suminagashi_orchestra.resource_class_directories%</argument>
         </service>
         <service id="Suminagashi\OrchestraBundle\Utils\EntityParser" alias="suminagashi_orchestra.entity.parser" public="false" />
-        <service id="suminagashi_orchestra.routing.doc_parser_loader" class="Suminagashi\OrchestraBundle\Routing\DocParserLoader">
-            <tag name="routing.loader" />
+        <service id="suminagashi_orchestra.routing.admin_router" class="Suminagashi\OrchestraBundle\Routing\AdminRouter">
+            <tag name="routing.route_loader" />
         </service>
 
         <!--Controllers-->
         <service id="suminagashi_orchestra.controller.admin" class="Suminagashi\OrchestraBundle\Controller\OrchestraController" public="true">
+            <argument type="service" id="suminagashi_orchestra.entity.parser" />
+        </service>
+
+        <service id="suminagashi_orchestra.twig_extension.menu" class="Suminagashi\OrchestraBundle\Twig\MenuExtension" public="true">
+            <tag name="twig.extension" />
             <argument type="service" id="suminagashi_orchestra.entity.parser" />
         </service>
     </services>

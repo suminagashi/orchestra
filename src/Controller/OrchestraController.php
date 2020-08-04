@@ -2,7 +2,6 @@
 
 namespace Suminagashi\OrchestraBundle\Controller;
 
-use ReflectionException;
 use Suminagashi\OrchestraBundle\Utils\EntityParser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,16 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 class OrchestraController extends AbstractController
 {
     /**
-     * @param EntityParser $entityParser
      * @return Response
-     * @throws ReflectionException
      */
-    public function dashboard(EntityParser $entityParser): Response
+    public function dashboard(): Response
     {
-        $entitiesInfos = $entityParser->read();
-        return $this->render('@Orchestra/dashboard.html.twig', [
-            'controller_name' => 'DefaultController',
-            'info' => json_encode($entitiesInfos, false)
+        return $this->render('@Orchestra/dashboard.html.twig');
+    }
+
+    /**
+     * @param string $resource
+     * @return Response
+     */
+    public function resourceCollection(string $resource, EntityParser $entityParser): Response
+    {
+        $resourceMetadata = $entityParser->getResourceFromName($resource);
+        $reflectionClass = new \ReflectionClass($resourceMetadata->getBaseResource());
+        $repository = $this->getDoctrine()->getRepository($resourceMetadata->getBaseResource());
+        return $this->render('@Orchestra/resource.html.twig', [
+            'resource' => $resource,
+            'data' => $repository->findAll(),
+            'properties' => $reflectionClass->getProperties()
         ]);
     }
 }

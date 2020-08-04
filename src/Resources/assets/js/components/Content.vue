@@ -12,7 +12,6 @@
         <SearchBar class="w-full"/>
       </div>
     </div>
-    </nav>
     <div class="flex flew-row-reverse mx-10 mb-2">
       <Widget data="150" change="6" desc="new users last week" color="blue"/>
       <Widget data="13" change="0" desc="% of benefits" color="indigo"/>

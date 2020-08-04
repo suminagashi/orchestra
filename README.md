@@ -1,4 +1,4 @@
-<p align="center"><img alt="orchestra" src="./public/img/orchestra.png" width="500"/></p>
+<p align="center"><img alt="orchestra" src="./src/Resources/public/img/orchestra.png" width="500"/></p>
 
 <p align="center">
 <b>Sleek symfony admin boilerplate</b>
@@ -34,10 +34,6 @@ return [
 orchestra_admin:
   resource: "@OrchestraBundle/Resources/config/routes.xml"
   prefix: /admin
-
-_orchestra_resources:
-  resource: .
-  type: orchestra
 ```
 
 ### Usage :

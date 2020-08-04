@@ -20,9 +20,18 @@
     </a>
   </li>
 </template>
+
 <script>
 export default {
-  name: 'Button',
-  props: ['name', 'link', 'active']
+  name: 'Link',
+  props: {
+    name: String,
+    link: String
+  },
+  computed: {
+    active: function () {
+      return this.link === window.location.pathname;
+    }
+  }
 }
 </script>
