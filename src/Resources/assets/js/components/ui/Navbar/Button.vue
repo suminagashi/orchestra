@@ -1,8 +1,6 @@
 <template >
-  <li
-    v-if="active"
-    class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
-    -ml-4 shadow-xl hover:text-blue-600">
+  <router-link :to="link" v-if="isActive()">
+  <li class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg -ml-4 shadow-xl hover:text-blue-600">
     <a :href="link" class="flex pl-4">
       <span
         class="ml-2 capitalize">
@@ -10,7 +8,9 @@
       </span>
     </a>
   </li>
-  <li class="mt-8" v-else>
+  </router-link>
+  <router-link :to="link" v-else>
+  <li class="mt-8" >
     <a :href="link" class="flex hover:text-blue-600">
       <span
         class="ml-2 capitalize font-medium
@@ -19,10 +19,19 @@
       </span>
     </a>
   </li>
+  </router-link>
 </template>
 <script>
 export default {
   name: 'Button',
-  props: ['name', 'link', 'active']
+  props: ['name', 'link'],
+  methods: {
+    isActive(){
+      if(this.name === this.$route.name){
+        return true;
+      }
+      return false;
+    }
+  }
 }
 </script>

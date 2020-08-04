@@ -7,15 +7,9 @@
     </head>
     <body>
         <div id="app"></div>
-        <script>
+        <script type="text/javascript">
+            window.data = {{ info|raw }};
             {{ source('@Orchestra/build/app.js') }}
         </script>
-        <div id="orchestra" data-orchestra="{{info}}"></div>
     </body>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            const parsed = document.querySelector('#orchestra').dataset.orchestra;
-            console.log(JSON.parse(parsed));
-        });
-    </script>
 </html>
