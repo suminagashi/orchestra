@@ -2,9 +2,9 @@
   <nav class="flex flex-col bg-gray-200 dark:bg-gray-900 w-64 px-12 pt-4 pb-6">
 
     <div class="flex flex-row items-center justify-center pb-2">
-      <span class="text-lg font-semibold capitalize dark:text-gray-300">
+      <router-link to="/" class="text-lg font-semibold capitalize dark:text-gray-300">
         {{title}}
-      </span>
+      </router-link>
     </div>
 
     <ConnectedUser name="Louis Harang" role="Admin" />
@@ -12,10 +12,10 @@
     <Action name="Add user" />
 
     <ul class="mt-2 text-gray-600">
-      <Button name="dashboard" link="#" />
-      <Button name="users" link="#" :active="true" />
-      <Button name="calendar" link="#" />
-      <Button name="tasks" link="#" />
+      <Button name="dashboard" link="/dashboard" />
+      <Button name="edit" link="/edit" :active="true" />
+      <Button name="calendar" link="/edit" />
+      <Button name="tasks" link="/" />
     </ul>
 
     <div class="mt-auto flex items-center text-red-700 hover:text-red-800 dark:text-red-400">
