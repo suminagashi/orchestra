@@ -1,7 +1,5 @@
 <template>
-    <div class="h-screen w-full flex overflow-hidden">
-      <Content />
-    </div>
+  <Content/>
 </template>
 
 <script>

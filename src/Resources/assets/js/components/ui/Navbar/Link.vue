@@ -2,7 +2,7 @@
   <li
     v-if="active"
     class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg
-    -ml-4 shadow-xl hover:text-blue-600">
+    -ml-4 shadow-xl text-blue-600">
     <a :href="link" class="flex pl-4">
       <span
         class="ml-2 capitalize">
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     active: function () {
-      return this.link === window.location.pathname;
+      return this.link.slice(0, -1) === window.location.pathname;
     }
   }
 }

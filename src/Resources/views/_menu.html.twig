@@ -2,7 +2,9 @@
 
     <div class="flex flex-row items-center justify-center pb-2">
       <span class="text-lg font-semibold capitalize dark:text-gray-300">
-        Orchestra admin
+          <a href="{{ path('orchestra_admin_dashboard') }}">
+              Orchestra admin
+          </a>
       </span>
     </div>
 
@@ -19,7 +21,7 @@
 
     <ul class="mt-2 text-gray-600">
         {% for resource in admin_resources() %}
-            <menu-link name="{{ resource.label }}" link="{{ path(resource.path) }}"></menu-link>
+            <menu-link name="{{ resource.label }}" link="{{ path('orchestra_'~resource.name~'_path') }}"></menu-link>
         {% endfor %}
     </ul>
 </nav>

@@ -11,9 +11,11 @@
     {% endblock %}
 </head>
 <body>
-    <div id="app" class="flex">
+    <div id="app" class="flex min-h-screen">
         {% include '@Orchestra/_menu.html.twig' %}
-        {% block body %}{% endblock %}
+        <main class="w-full overflow-hidden bg-gray-100">
+            {% block body %}{% endblock %}
+        </main>
     </div>
     {% block javascripts %}
         <script src="/bundles/orchestra/build/app.js"></script>

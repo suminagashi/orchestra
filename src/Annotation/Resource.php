@@ -2,81 +2,42 @@
 
 namespace Suminagashi\OrchestraBundle\Annotation;
 
+use Doctrine\Common\Annotations\Annotation\Attribute;
+use Doctrine\Common\Annotations\Annotation\Attributes;
+use Doctrine\Common\Annotations\Annotation\Enum;
+use Doctrine\Common\Annotations\Annotation\Target;
+
 /**
  * @Annotation
  * @Target("CLASS")
  * @Attributes(
  *     @Attribute("label", type="string"),
- *     @Attribute("actions", type="array")
+ *     @Attribute("actions", type="array"),
+ *     @Attribute("path", type="string")
  * )
  */
 class Resource
 {
-    private const ACTIONS = [
+    public const AVAILABLE_ACTIONS = [
         "create",
         "read",
         "edit",
         "delete"
     ];
 
-    /** @var string */
-    private $name;
-    /** @var array */
-    private $actions = self::ACTIONS;
-    /** @var string */
-    private $path;
+    /**
+     * @var string
+     */
+    public $label;
 
     /**
-     * @return string
+     * @var array
+     * @Enum(Suminagashi\OrchestraBundle\Annotation\Resource::AVAILABLE_ACTIONS)
      */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+    public $actions = self::AVAILABLE_ACTIONS;
 
     /**
-     * @param string|null $name
-     * @return Resource
+     * @var string
      */
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getActions(): ?array
-    {
-        return $this->actions;
-    }
-
-    /**
-     * @param array|null $actions
-     * @return Resource
-     */
-    public function setActions(?array $actions): self
-    {
-        $this->actions = $actions;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param string|null $path
-     * @return Resource
-     */
-    public function setPath(?string $path): self
-    {
-        $this->path = $path;
-        return $this;
-    }
+    public $path;
 }

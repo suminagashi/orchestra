@@ -1,6 +1,6 @@
 <template>
-  <main
-    class="flex-1 flex flex-col bg-gray-100 dark:bg-gray-700 transition
+  <div
+    class="flex-1 flex flex-col  dark:bg-gray-700 transition
     duration-500 ease-in-out overflow-y-auto">
     <div class="grid grid-cols-4 gap-4 mt-10 my-10 mx-10">
       <div class="col-span-3">
@@ -53,7 +53,7 @@
   <div class="flew content-center flex-wrap w-full">
     <Pagination />
   </div>
-  </main>
+  </div>
 </template>
 <script>
   import Row from './ui/Row';

@@ -4,7 +4,6 @@
 namespace Suminagashi\OrchestraBundle\Metadata;
 
 use Suminagashi\OrchestraBundle\Annotation\Resource;
-use Suminagashi\OrchestraBundle\Routing\AdminRouter;
 use Symfony\Component\String\Inflector\EnglishInflector;
 use function Symfony\Component\String\u;
 
@@ -27,7 +26,7 @@ class ResourceMetadata
         $inflector = new EnglishInflector();
         $shortName = $inflector->pluralize($reflectionClass->getShortName())[0];
         $this->name = u($shortName)->lower();
-        $this->label = $resourceAnnotation->getName() ?: $shortName;
+        $this->label = $resourceAnnotation->label ?: $shortName;
         $this->baseResource = $reflectionClass->getName();
     }
 
@@ -53,13 +52,5 @@ class ResourceMetadata
     public function getBaseResource(): string
     {
         return $this->baseResource;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return sprintf(AdminRouter::TEMPLATE_ROUTE, $this->name);
     }
 }
