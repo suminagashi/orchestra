@@ -89,3 +89,13 @@ class Dummy
     }
 }
 ```
+
+### API Reference
+
+#### `@Resource`
+
+| Attribute  | Description |
+| ------------- | ------------- |
+| `label`  | Used to set the label displayed in the menu |
+| `actions`  | WIP : Set available CRUD operations |
+| `path`  | WIP : Override default path of the resource |
