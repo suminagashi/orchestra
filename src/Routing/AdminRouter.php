@@ -2,7 +2,7 @@
 
 namespace Suminagashi\OrchestraBundle\Routing;
 
-use Suminagashi\OrchestraBundle\Annotation\Resource;
+use Suminagashi\OrchestraBundle\Metadata\ResourceMetadata;
 use Suminagashi\OrchestraBundle\Utils\EntityParser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Route;
@@ -30,7 +30,7 @@ class AdminRouter
     public function __invoke($resource, string $type = null): RouteCollection
     {
         $collection = new RouteCollection();
-        /** @var Resource $item */
+        /** @var ResourceMetadata $item */
         foreach ($this->entityParser->getAllResources() as $item) {
             $resourceCollection = new RouteCollection();
             $resourceCollection->add('_path', new Route('', [], [], [], null, [], [Request::METHOD_GET]));

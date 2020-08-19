@@ -25,7 +25,7 @@ class ResourceMetadata
     {
         $inflector = new EnglishInflector();
         $shortName = $inflector->pluralize($reflectionClass->getShortName())[0];
-        $this->name = u($shortName)->lower();
+        $this->name = u($resourceAnnotation->name ?: $shortName)->lower();
         $this->label = $resourceAnnotation->label ?: $shortName;
         $this->baseResource = $reflectionClass->getName();
     }

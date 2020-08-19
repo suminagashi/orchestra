@@ -97,5 +97,5 @@ class Dummy
 | Attribute  | Description |
 | ------------- | ------------- |
 | `label`  | Used to set the label displayed in the menu |
+| `name`  | Override default name of the resource |
 | `actions`  | WIP : Set available CRUD operations |
-| `path`  | WIP : Override default path of the resource |

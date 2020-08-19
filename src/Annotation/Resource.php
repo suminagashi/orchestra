@@ -13,7 +13,7 @@ use Doctrine\Common\Annotations\Annotation\Target;
  * @Attributes(
  *     @Attribute("label", type="string"),
  *     @Attribute("actions", type="array"),
- *     @Attribute("path", type="string")
+ *     @Attribute("name", type="string")
  * )
  */
 class Resource
@@ -39,5 +39,5 @@ class Resource
     /**
      * @var string
      */
-    public $path;
+    public $name;
 }
