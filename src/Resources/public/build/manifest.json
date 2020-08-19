@@ -1,0 +1,5 @@
+{
+  "bundles/orchestra/app.css": "/build/app.css",
+  "bundles/orchestra/app.js": "/build/app.js",
+  "bundles/orchestra/css/app.css": "/build/css/app.css"
+}

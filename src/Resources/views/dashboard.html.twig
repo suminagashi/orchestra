@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <style>{{ source('@Orchestra/build/css/app.css') }}</style>
-    </head>
-    <body>
-        <div id="app"></div>
-        <script>
-            {{ source('@Orchestra/build/app.js') }}
-        </script>
-        <div id="orchestra" data-orchestra="{{info}}"></div>
-    </body>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            const parsed = document.querySelector('#orchestra').dataset.orchestra;
-            console.log(JSON.parse(parsed));
-        });
-    </script>
-</html>
+{% extends '@Orchestra/layouts/layout.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block body %}
+    <custom-app></custom-app>
+{% endblock %}

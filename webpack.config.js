@@ -7,10 +7,18 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    .setOutputPath('src/Resources/views/build')
+    .setOutputPath('src/Resources/public/build')
     .setPublicPath('/build')
+    .setManifestKeyPrefix('bundles/orchestra')
+
+    .cleanupOutputBeforeBuild()
+    .enableSourceMaps(false)
+    .enableVersioning(false)
+    .disableSingleRuntimeChunk()
+
     .addEntry('app', './src/Resources/assets/js/index.js')
-    .enableVueLoader(() => {}, { runtimeCompilerBuild: true})
+    .enableVueLoader(() => {}, { runtimeCompilerBuild: true })
+
     .addStyleEntry('css/app', './src/Resources/assets/css/app.less')
     .enableLessLoader()
     .enablePostCssLoader()

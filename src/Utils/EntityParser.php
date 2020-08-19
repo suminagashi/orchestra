@@ -4,9 +4,9 @@ namespace Suminagashi\OrchestraBundle\Utils;
 
 use Doctrine\Common\Annotations\Reader;
 use Suminagashi\OrchestraBundle\Annotation\Resource;
+use Suminagashi\OrchestraBundle\Metadata\ResourceMetadata;
 use Suminagashi\OrchestraBundle\Utils\Helpers\AnnotationTranslator;
 use Suminagashi\OrchestraBundle\Utils\Helpers\ReflectionClassRecursiveIterator;
-use Symfony\Component\Finder\Finder;
 
 /**
  * Load entities & call Annotation & Property parser
@@ -28,59 +28,30 @@ class EntityParser
     }
 
     /**
-     * @return array
-     * @throws \ReflectionException
+     * @return \Generator|null
      */
-    public function read(): array
+    public function getAllResources(): ?\Generator
     {
-        $entities = [];
         /**
          * @var string $className
          * @var \ReflectionClass $reflectionClass
          */
         foreach (ReflectionClassRecursiveIterator::getReflectionClassesFromDirectories($this->resourceClassDirectories) as $className => $reflectionClass) {
-            $resourceAnnotation = $this->generateDataFromAnnotation($reflectionClass);
+            /** @var Resource $resourceAnnotation */
+            $resourceAnnotation = $this->reader->getClassAnnotation($reflectionClass, Resource::class);
             if ($resourceAnnotation !== null) {
-                $entities[$className] = $resourceAnnotation;
+                yield new ResourceMetadata($resourceAnnotation, $reflectionClass);
             }
         }
-
-        return $entities;
-
     }
 
-    /**
-     * @param \ReflectionClass $reflectionClass
-     * @return array[]|null
-     */
-    private function generateDataFromAnnotation(\ReflectionClass $reflectionClass): ?array
+    public function getResourceFromName(string $name): ResourceMetadata
     {
-        $resourceAnnotation = $this->reader->getClassAnnotation($reflectionClass, Resource::class);
-        if ($resourceAnnotation === null) {
-            return null;
-        }
-
-        $fields = [];
-        foreach ($reflectionClass->getProperties() as $property) {
-            foreach ($this->reader->getPropertyAnnotations($property) as $annotation) {
-                if ($annotationTranslation = AnnotationTranslator::translate($annotation)) {
-                     if(isset($fields[$property->getName()][$annotationTranslation['type']])) {
-                       $fields[$property->getName()][$annotationTranslation['type']] += $annotationTranslation['values'];
-                     } else {
-                       $fields[$property->getName()][$annotationTranslation['type']] = $annotationTranslation['values'];
-                     }
-                }
+        /** @var ResourceMetadata $resource */
+        foreach ($this->getAllResources() as $resource) {
+            if ($resource->getName() === $name) {
+                return $resource;
             }
         }
-
-        $meta = array_merge([
-            'name' => $reflectionClass->getShortName(),
-            'fullname' => $reflectionClass->getName(),
-        ], (array) $resourceAnnotation);
-
-        return [
-            'meta' => $meta,
-            'fields' => $fields,
-        ];
     }
 }

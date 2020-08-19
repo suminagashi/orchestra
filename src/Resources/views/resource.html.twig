@@ -1,0 +1,44 @@
+{% extends '@Orchestra/layouts/layout.html.twig' %}
+
+{% block title %}{{ resource }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-semibold dark:text-gray-400">{{ resource|capitalize }}</h1>
+    <div>
+        <table class="table-auto">
+            <thead>
+            <tr>
+                {% for property in properties %}
+                    <th class="px-4 py-2">{{ property.name|capitalize }}</th>
+                {% endfor %}
+                <th class="px-4 py-2">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white">
+            {% for item in data %}
+                <tr>
+                    {% for property in properties %}
+                        <td class="border px-4 py-2">{{ attribute(item, property.name) }}</td>
+                    {% endfor %}
+                    <td class="border px-4 py-2 flex">
+                        <a href="{{ path('orchestra_'~resource~'_show', { id: item.id }) }}" class="text-blue-600 font-bold w-18 text-center cursor-pointer">
+                            <svg fill="none" class="w-6" stroke-linecap="round" stroke-linejoin="round"
+                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </a>
+
+                        <a href="{{ path('orchestra_'~resource~'_edit', { id: item.id }) }}" class="text-orange-600 font-bold w-18 text-center ml-2 cursor-pointer">
+                            <svg fill="none" class="w-6" stroke-linecap="round" stroke-linejoin="round"
+                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

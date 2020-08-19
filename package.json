@@ -4,12 +4,10 @@
   "description": "Sleek symfony admin boilerplate",
   "main": "index.js",
   "dependencies": {
+    "tailwindcss": "^1.6.2",
     "vue": "^2.6.11",
-    "vue-loader": "^15.9.3",
     "vue-router": "^3.3.4",
-    "vue-template-compiler": "^2.6.11",
-    "vuex": "^3.5.1",
-    "webpack-notifier": "^1.8.0"
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.30.2",
@@ -17,7 +15,8 @@
     "less": "^3.12.2",
     "less-loader": "^6.2.0",
     "postcss-loader": "^3.0.0",
-    "tailwindcss": "^1.6.0"
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.11"
   },
   "scripts": {
     "dev-server": "encore dev-server",

@@ -2,13 +2,23 @@
 
 namespace Suminagashi\OrchestraBundle\Annotation;
 
+use Doctrine\Common\Annotations\Annotation\Attribute;
+use Doctrine\Common\Annotations\Annotation\Attributes;
+use Doctrine\Common\Annotations\Annotation\Enum;
+use Doctrine\Common\Annotations\Annotation\Target;
+
 /**
  * @Annotation
  * @Target("CLASS")
+ * @Attributes(
+ *     @Attribute("label", type="string"),
+ *     @Attribute("actions", type="array"),
+ *     @Attribute("name", type="string")
+ * )
  */
 class Resource
 {
-    CONST ACTIONS = [
+    public const AVAILABLE_ACTIONS = [
         "create",
         "read",
         "edit",
@@ -16,30 +26,18 @@ class Resource
     ];
 
     /**
-     *
+     * @var string
+     */
+    public $label;
+
+    /**
+     * @var array
+     * @Enum(Suminagashi\OrchestraBundle\Annotation\Resource::AVAILABLE_ACTIONS)
+     */
+    public $actions = self::AVAILABLE_ACTIONS;
+
+    /**
      * @var string
      */
     public $name;
-
-    /**
-     *
-     * @var array
-     */
-    public $actions = self::ACTIONS;
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return array
-     */
-    public function getActions()
-    {
-        return $this->actions;
-    }
 }

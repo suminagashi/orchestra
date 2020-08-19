@@ -4,4 +4,6 @@
         xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
     <route id="orchestra_admin_dashboard" controller="suminagashi_orchestra.controller.admin:dashboard" path="/" />
+    <route id="orchestra_admin_resource" controller="suminagashi_orchestra.controller.admin:resourceCollection" path="/resources/{resource}" />
+    <import resource="suminagashi_orchestra.routing.admin_router" type="service"/>
 </routes>
