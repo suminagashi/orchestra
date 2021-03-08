@@ -4,8 +4,8 @@ namespace Suminagashi\OrchestraBundle\Utils;
 
 use Doctrine\Common\Annotations\Reader;
 use Suminagashi\OrchestraBundle\Annotation\Resource;
-use Suminagashi\OrchestraBundle\Metadata\ResourceMetadata;
-use Suminagashi\OrchestraBundle\Utils\Helpers\AnnotationTranslator;
+use Suminagashi\OrchestraBundle\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
+use Suminagashi\OrchestraBundle\Metadata\Resource\ResourceMetadata;
 use Suminagashi\OrchestraBundle\Utils\Helpers\ReflectionClassRecursiveIterator;
 
 /**
@@ -17,14 +17,24 @@ class EntityParser
     private $reader;
     /** @var array */
     private $resourceClassDirectories;
+    /** @var PropertyMetadataFactoryInterface */
+    private $propertyMetadataFactory;
 
+    /**
+     * EntityParser constructor.
+     * @param Reader $reader
+     * @param PropertyMetadataFactoryInterface $propertyMetadataFactory
+     * @param $resourceClassDirectories
+     */
     public function __construct(
         Reader $reader,
+        PropertyMetadataFactoryInterface $propertyMetadataFactory,
         $resourceClassDirectories
     )
     {
         $this->reader = $reader;
         $this->resourceClassDirectories = $resourceClassDirectories;
+        $this->propertyMetadataFactory = $propertyMetadataFactory;
     }
 
     /**
@@ -45,6 +55,25 @@ class EntityParser
         }
     }
 
+    /**
+     * @param \ReflectionClass $reflectionClass
+     * @return \Generator|null
+     */
+    public function getAllProperties(\ReflectionClass $reflectionClass): ?\Generator
+    {
+        $properties = $this->propertyMetadataFactory->create($reflectionClass->getName(), 'name');
+        dd($this->propertyMetadataFactory);
+//        foreach ($properties as $property) {
+//            if ($this->propertyInfoExtractor->isWritable($reflectionClass->getName(), $property)) {
+//                yield $this->propertyMetadataFactory->create($reflectionClass->getName(), $property);
+//            }
+//        }
+    }
+
+    /**
+     * @param string $name
+     * @return ResourceMetadata
+     */
     public function getResourceFromName(string $name): ResourceMetadata
     {
         /** @var ResourceMetadata $resource */
@@ -53,5 +82,17 @@ class EntityParser
                 return $resource;
             }
         }
+    }
+
+    /**
+     * @param string $name
+     * @return \Generator
+     * @throws \ReflectionException
+     */
+    public function getPropertiesFromName(string $name): \Generator
+    {
+        $resourceMetadata = $this->getResourceFromName($name);
+        /** @var ResourceMetadata $resource */
+        return $this->getAllProperties($resourceMetadata->getReflectionClass());
     }
 }

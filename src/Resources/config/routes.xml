@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <routes xmlns="http://symfony.com/schema/routing"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
-    <route id="orchestra_admin_dashboard" controller="suminagashi_orchestra.controller.admin:dashboard" path="/" />
-    <route id="orchestra_admin_resource" controller="suminagashi_orchestra.controller.admin:resourceCollection" path="/resources/{resource}" />
-    <import resource="suminagashi_orchestra.routing.admin_router" type="service"/>
+
+    <route
+        id="orchestra_admin_dashboard"
+        controller="suminagashi_orchestra.controller.dashboard"
+        path="/"
+    />
+
+<!--    <route-->
+<!--        id="orchestra_admin_resource"-->
+<!--        controller="suminagashi_orchestra.controller.collection"-->
+<!--        path="/resources/{resource}"-->
+<!--    />-->
+
+    <route id="orchestra_admin_resource_create" path="/resources/{resource}/create">
+        <default key="_controller">suminagashi_orchestra.controller.admin:resourceCreate</default>
+    </route>
+
 </routes>

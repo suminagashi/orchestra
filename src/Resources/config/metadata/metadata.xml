@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ResourceNameCollectionFactoryInterface"
+                 alias="suminagashi_orchestra.metadata.resource.name_collection_factory"/>
+
+        <service id="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ResourceMetadataFactoryInterface"
+                 alias="suminagashi_orchestra.metadata.resource.metadata_factory"/>
+
+        <service id="Suminagashi\OrchestraBundle\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface"
+                 alias="suminagashi_orchestra.metadata.property.name_collection_factory"/>
+
+        <service id="Suminagashi\OrchestraBundle\Metadata\Property\Factory\PropertyMetadataFactoryInterface"
+                 alias="suminagashi_orchestra.metadata.property.metadata_factory"/>
+    </services>
+</container>

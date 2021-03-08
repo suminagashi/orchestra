@@ -6,23 +6,37 @@
     <services>
         <defaults autowire="true" autoconfigure="true"/>
         <service id="suminagashi_orchestra.annotation.translator" class="Suminagashi\OrchestraBundle\Utils\Helpers\AnnotationTranslator" />
+
+        <!--Factory-->
+        <service id="suminagashi_orchestra.factory.property_info_extractor_factory" class="Suminagashi\OrchestraBundle\Factory\PropertyInfoExtractorFactory"/>
+
+        <!--Utils-->
         <service id="suminagashi_orchestra.entity.parser" class="Suminagashi\OrchestraBundle\Utils\EntityParser" public="true">
             <argument type="service" id="annotations.reader" />
+            <argument type="service" id="suminagashi_orchestra.metadata.property.metadata_factory.annotation" />
             <argument>%suminagashi_orchestra.resource_class_directories%</argument>
         </service>
         <service id="Suminagashi\OrchestraBundle\Utils\EntityParser" alias="suminagashi_orchestra.entity.parser" public="false" />
-        <service id="suminagashi_orchestra.routing.admin_router" class="Suminagashi\OrchestraBundle\Routing\AdminRouter">
-            <tag name="routing.route_loader" />
+
+        <service id="suminagashi_orchestra.resource.form_builder" class="Suminagashi\OrchestraBundle\Utils\ResourceFormBuilder" public="true">
+            <argument type="service" id="form.factory" />
+        </service>
+        <service id="Suminagashi\OrchestraBundle\Utils\ResourceFormBuilder" alias="suminagashi_orchestra.resource.form_builder" public="false" />
+
+        <!--Routing-->
+        <service id="suminagashi_orchestra.routing.admin_router" class="Suminagashi\OrchestraBundle\Routing\AdminRouter" public="false">
+            <tag name="routing.loader" />
         </service>
 
         <!--Controllers-->
-        <service id="suminagashi_orchestra.controller.admin" class="Suminagashi\OrchestraBundle\Controller\OrchestraController" public="true">
-            <argument type="service" id="suminagashi_orchestra.entity.parser" />
-        </service>
+        <service id="suminagashi_orchestra.controller.dashboard" class="Suminagashi\OrchestraBundle\Controller\DashboardController" public="true" />
+        <service id="suminagashi_orchestra.controller.collection" class="Suminagashi\OrchestraBundle\Controller\CollectionController" public="true" />
+        <service id="suminagashi_orchestra.controller.item" class="Suminagashi\OrchestraBundle\Controller\ItemController" public="true" />
 
+        <!--Twig-->
         <service id="suminagashi_orchestra.twig_extension.menu" class="Suminagashi\OrchestraBundle\Twig\MenuExtension" public="true">
             <tag name="twig.extension" />
-            <argument type="service" id="suminagashi_orchestra.entity.parser" />
+            <argument type="service" id="suminagashi_orchestra.metadata.resource.name_collection_factory" />
         </service>
     </services>
 </container>

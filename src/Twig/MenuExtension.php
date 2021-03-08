@@ -2,25 +2,30 @@
 
 namespace Suminagashi\OrchestraBundle\Twig;
 
-use Suminagashi\OrchestraBundle\Utils\EntityParser;
+use Generator;
+use Suminagashi\OrchestraBundle\Exception\ResourceClassNotFoundException;
+use Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ResourceNameCollectionFactoryInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class MenuExtension extends AbstractExtension
 {
-    /**
-     * @var EntityParser
-     */
-    private $entityParser;
+    /** @var ResourceNameCollectionFactoryInterface */
+    private $resourceNameCollectionFactory;
+    /** @var ResourceMetadataFactoryInterface */
+    private $resourceMetadataFactory;
 
     /**
      * MenuExtension constructor.
-     * @param EntityParser $entityParser
+     * @param ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory
+     * @param ResourceMetadataFactoryInterface $resourceMetadataFactory
      */
-    public function __construct(EntityParser $entityParser)
+    public function __construct(ResourceNameCollectionFactoryInterface $resourceNameCollectionFactory, ResourceMetadataFactoryInterface $resourceMetadataFactory)
     {
-        $this->entityParser = $entityParser;
+        $this->resourceNameCollectionFactory = $resourceNameCollectionFactory;
+        $this->resourceMetadataFactory = $resourceMetadataFactory;
     }
 
     /**
@@ -33,8 +38,14 @@ class MenuExtension extends AbstractExtension
         ];
     }
 
-    public function getAdminResources(): \Generator
+    /**
+     * @return Generator
+     * @throws ResourceClassNotFoundException
+     */
+    public function getAdminResources(): Generator
     {
-        return $this->entityParser->getAllResources();
+        foreach ($this->resourceNameCollectionFactory->create() as $item) {
+            yield $this->resourceMetadataFactory->create($item);
+        }
     }
 }

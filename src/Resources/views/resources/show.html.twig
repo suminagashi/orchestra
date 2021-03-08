@@ -1,0 +1,24 @@
+{% extends '@Orchestra/layouts/layout.html.twig' %}
+
+{% block title %}{{ resourceMetadata.label }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-semibold dark:text-gray-400">{{ resourceMetadata.label|capitalize }}</h1>
+    <a href="{{ path('orchestra_'~resourceMetadata.name~'_edit', {id: item.id}) }}"
+       class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+        Edit
+    </a>
+    <div>
+        {% for property in properties %}
+            <div class="px-4 py-2">
+                <span>
+                    {{ property.label|capitalize }}
+                </span>
+                :
+                <span>
+                    {{ attribute(item, property.name) }}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

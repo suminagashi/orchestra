@@ -1,1 +1,4 @@
-input:checked+svg{display:block}
+input:checked + svg {
+  display: block;
+}
+

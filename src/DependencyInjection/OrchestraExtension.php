@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Suminagashi\OrchestraBundle\DependencyInjection;
 
+use Doctrine\Common\Annotations\Annotation;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -24,5 +26,18 @@ final class OrchestraExtension extends Extension
         );
 
         $loader->load('services.xml');
+
+        $this->registerMetadataConfiguration($loader);
+
+    }
+
+    private function registerMetadataConfiguration(FileLoader $loader)
+    {
+        $loader->load('metadata/metadata.xml');
+        $loader->load('metadata/xml.xml');
+
+        if (class_exists(Annotation::class)) {
+            $loader->load('metadata/annotation.xml');
+        }
     }
 }

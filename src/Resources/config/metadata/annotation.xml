@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="suminagashi_orchestra.metadata.resource.name_collection_factory.annotation"
+                 decorates="suminagashi_orchestra.metadata.resource.name_collection_factory"
+                 class="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\AnnotationResourceNameCollectionFactory"
+                 public="false">
+            <argument type="service" id="annotation_reader"/>
+            <argument>%suminagashi_orchestra.resource_class_directories%</argument>
+            <argument type="service"
+                      id="suminagashi_orchestra.metadata.resource.name_collection_factory.annotation.inner"/>
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.resource.metadata_factory.annotation"
+                 decorates="suminagashi_orchestra.metadata.resource.metadata_factory" decoration-priority="40"
+                 class="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\AnnotationResourceMetadataFactory"
+                 public="false">
+            <argument type="service" id="annotation_reader"/>
+            <argument type="service" id="suminagashi_orchestra.metadata.resource.metadata_factory.annotation.inner"/>
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.property.metadata_factory.annotation"
+                 decorates="suminagashi_orchestra.metadata.property.metadata_factory" decoration-priority="20"
+                 class="Suminagashi\OrchestraBundle\Metadata\Property\Factory\AnnotationPropertyMetadataFactory"
+                 public="false">
+            <argument type="service" id="annotation_reader"/>
+            <argument type="service" id="suminagashi_orchestra.metadata.property.metadata_factory.annotation.inner"/>
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.property.name_collection_factory.annotation"
+                 decorates="suminagashi_orchestra.metadata.property.name_collection_factory"
+                 class="Suminagashi\OrchestraBundle\Metadata\Property\Factory\AnnotationPropertyNameCollectionFactory"
+                 public="false">
+            <argument type="service" id="annotation_reader"/>
+            <argument type="service"
+                      id="suminagashi_orchestra.metadata.property.name_collection_factory.annotation.inner"/>
+            <argument type="service" id="suminagashi_orchestra.metadata.property.metadata_factory.annotation"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,10 @@
+{% extends '@Orchestra/layouts/layout.html.twig' %}
+
+{% block title %}{{ resource }} create{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-semibold dark:text-gray-400">New {{ resource|capitalize }}</h1>
+    <div>
+        {{ form(resourceForm) }}
+    </div>
+{% endblock %}

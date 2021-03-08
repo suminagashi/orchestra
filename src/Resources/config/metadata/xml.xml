@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="suminagashi_orchestra.metadata.extractor.xml" class="Suminagashi\OrchestraBundle\Metadata\Extractor\XmlExtractor" public="false">
+            <argument type="collection" />
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.resource.name_collection_factory" alias="suminagashi_orchestra.metadata.resource.name_collection_factory.xml" />
+        <service id="suminagashi_orchestra.metadata.resource.name_collection_factory.xml" class="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ExtractorResourceNameCollectionFactory" public="false">
+            <argument type="service" id="suminagashi_orchestra.metadata.extractor.xml" />
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.resource.metadata_factory" alias="suminagashi_orchestra.metadata.resource.metadata_factory.xml" />
+        <service id="suminagashi_orchestra.metadata.resource.metadata_factory.xml" class="Suminagashi\OrchestraBundle\Metadata\Resource\Factory\ExtractorResourceMetadataFactory" public="false">
+            <argument type="service" id="suminagashi_orchestra.metadata.extractor.xml" />
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.property.name_collection_factory" alias="suminagashi_orchestra.metadata.property.name_collection_factory.xml" />
+        <service id="suminagashi_orchestra.metadata.property.name_collection_factory.xml" class="Suminagashi\OrchestraBundle\Metadata\Property\Factory\ExtractorPropertyNameCollectionFactory" decorates="suminagashi_orchestra.metadata.property.name_collection_factory" public="false">
+            <argument type="service" id="suminagashi_orchestra.metadata.extractor.xml" />
+        </service>
+
+        <service id="suminagashi_orchestra.metadata.property.metadata_factory" alias="suminagashi_orchestra.metadata.property.metadata_factory.xml" />
+        <service id="suminagashi_orchestra.metadata.property.metadata_factory.xml" class="Suminagashi\OrchestraBundle\Metadata\Property\Factory\ExtractorPropertyMetadataFactory" public="false">
+            <argument type="service" id="suminagashi_orchestra.metadata.extractor.xml" />
+        </service>
+    </services>
+</container>

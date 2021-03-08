@@ -5,34 +5,25 @@ namespace Suminagashi\OrchestraBundle\Annotation;
 /**
  * @Annotation
  * @Target("PROPERTY")
+ * @Attributes(
+ *     @Attribute("label", type="string"),
+ *     @Attribute("display", type="boolean"),
+ * )
  */
 class Field
 {
     /**
-     *
      * @var string
      */
     public $label;
 
     /**
-     *
+     * @var boolean
+     */
+    public $display = true;
+
+    /**
      * @var string
      */
     public $validation;
-
-    /**
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->label;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValidation()
-    {
-        return $this->validation;
-    }
 }

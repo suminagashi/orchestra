@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     active: function () {
-      return this.link.slice(0, -1) === window.location.pathname;
+      return window.location.pathname.includes(this.link.slice(0, -1));
     }
   }
 }
